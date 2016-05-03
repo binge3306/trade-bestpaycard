@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bestpay.trade.bestpaycard.dal.mapper.TScsActFeeMapper">
+
+    <insert id="insert" parameterType="com.bestpay.trade.bestpaycard.dal.model.TScsActFeeDO">
+        INSERT INTO t_scs_actfee
+          (ACTFEE_ID, ORDER_ID, ACTLIST_ID, CURRENCY_CODE, PRIM_MONEY,
+          DISC_MONEY, DUE_MOENY, PAY_MONEY, STAT, FARE_ID)
+        VALUES (
+          #{actFeeId},
+          #{orderId},
+          #{actListId},
+          #{currencyCode},
+          #{primMoney},
+          #{discMoney},
+          #{dueMoney},
+          #{payMoney},
+          #{stat},
+          #{fareId}
+        )
+    </insert>
+
+</mapper>

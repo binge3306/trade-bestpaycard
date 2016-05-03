@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bestpay.trade.bestpaycard.dal.mapper.TScsActListMapper">
+
+    <insert id="insert" parameterType="com.bestpay.trade.bestpaycard.dal.model.TScsActListDO">
+        INSERT INTO t_scs_actlist
+          (ACTLIST_ID, ACTLIST_SEQ, ORDER_ID, CUST_ID, PROD_ID,
+          ACTION_ID, OBJ_CODE, OBJ_COUNT, CREATE_DATE, BEGIN_DATE,
+          END_DATE, STAT, RET_ID, RET_DATE, RET_CODE,
+          RET_MSG, EVENT_SEQ, QRY_EVENT_SEQ, SRC_EVENTSEQ, SAG_ACTIONID,
+          INF_ACTIONID)
+        VALUES (
+          #{actListId},
+          #{actListSeq},
+          #{orderId},
+          #{custId},
+          #{prodId},
+          #{actionId},
+          #{objCode},
+          #{objCount},
+          SYSDATE,
+          SYSDATE,
+          SYSDATE,
+          #{stat},
+          #{retId},
+          SYSDATE,
+          #{retCode},
+          #{retMsg},
+          #{eventSeq},
+          #{qryEventSeq},
+          #{srcEventSeq},
+          #{sagActionId},
+          #{infActionId}
+        )
+    </insert>
+
+</mapper>

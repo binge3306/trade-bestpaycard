@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>trade-bestpaycard</artifactId>
+        <groupId>com.bestpay.trade-bestpaycard</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>trade-bestpaycard-manager</artifactId>
+    <packaging>jar</packaging>
+    <version>${parent.version}</version>
+    <name>trade-bestpaycard Project Manager</name>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>trade-bestpaycard-dal</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>trade-bestpaycard-service-facade</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>trade-bestpaycard-common</artifactId>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <finalName>trade-bestpaycard-manager</finalName>
+        <!--<testResources>-->
+        <!--<testResource>-->
+        <!--<directory>src/test/resources</directory>-->
+        <!--<filtering>true</filtering>-->
+        <!--</testResource>-->
+        <!--</testResources>-->
+        <!--<filters>-->
+        <!--<filter>src/test/resources/properties/billingcenter.properties</filter>-->
+        <!--</filters>-->
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.7</version>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

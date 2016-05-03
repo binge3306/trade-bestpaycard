@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+
+    <!-- Dubbo服务IP、Port配置 -->
+    <group name="dubbo">
+        <property name="dubbo.tradeprod.acquiring.port" defaultValue="-1" description="服务端口"/>
+        <property name="dubbo.zookeeper.address" defaultValue="zookeeper://172.16.248.120:2181" description="客户端端口" />
+    </group>
+
+    <!-- Redis服务信息配置 -->
+    <group name="redis">
+        <property name="redis.clusterName" defaultValue="cif-cache" />
+        <property name="redis.database" defaultValue="1" />
+        <property name="redis.sentinel.host" defaultValue="192.178.106.220" />
+        <property name="redis.sentinel.port" defaultValue="26379" />
+        <property name="redis.minIdle" defaultValue="50" />
+        <property name="redis.maxIdle" defaultValue="500" />
+        <property name="redis.maxTotal" defaultValue="600" />
+        <property name="redis.testOnBorrow" defaultValue="true" />
+    </group>
+
+    <!-- 日志级别、路径配置 -->
+    <group name="logger">
+        <property name="logger.logLevel" defaultValue="INFO" description="日志打印级别"/>
+        <property name="logger.outside.logLevel" defaultValue="INFO" description="外部包日志打印级别"/>
+        <property name="logger.logback.logpath" defaultValue="/data/appLogs/" description="日志目录"/>
+    </group>
+
+    <!-- 数据库配置 -->
+    <group name="database">
+        <property name="jdbc.jdbcUrl" defaultValue="jdbc:oracle:thin:@172.17.48.215:1521:tradedb" description="jdbcUrl"/>
+        <property name="jdbc.jdbcUsername" defaultValue="tradecenter_app" description="username" />
+        <property name="jdbc.jdbcPassword" defaultValue="123456" description="password"/>
+    </group>
+
+    <!-- 业务参数配置 -->
+    <group name="bizParam">
+        <property name="kafka.zookeeper.address" defaultValue="172.16.248.120:2181" description="kafkaZK地址"/>
+        <property name="kafka.url" defaultValue="172.16.248.54:29092" description="kafka集群地址"/>
+        <property name="tradecenter.topic.name" defaultValue="TRADECENTER_TRANS" description="结算数据同步kafka主题"/>
+        <property name="tradecenter.group.name" defaultValue="TRADECENTER_GROUP" description="结算kafka组别"/>
+        <property name="dispatch.envTag" defaultValue="TRADE" />
+    </group>
+
+    <!-- 连接池配置 -->
+    <group name="jdbc">
+        <property name="jdbc.driverClassName" defaultValue="oracle.jdbc.driver.OracleDriver" />
+        <property name="jdbc.initialSize" defaultValue="20" />
+        <property name="jdbc.minIdle" defaultValue="10" />
+        <property name="jdbc.maxIdle" defaultValue="200" />
+        <property name="jdbc.maxActive" defaultValue="200" />
+        <property name="jdbc.maxWait" defaultValue="1000" />
+        <property name="jdbc.testOnBorrow" defaultValue="false" />
+        <property name="jdbc.testWhileIdle" defaultValue="true" />
+        <property name="jdbc.timeBetweenEvictionRunsMillis" defaultValue="10000" />
+        <property name="jdbc.numTestsPerEvictionRun" defaultValue="3" />
+        <property name="jdbc.minEvictableIdleTimeMillis" defaultValue="300000" />
+    </group>
+
+    <!-- AutoConfig替换模版配置 -->
+    <script>
+        <generate template="dubbo-provider.xml.vm"      destfile="WEB-INF/classes/spring/dubbo-provider.xml"        charset="UTF-8"/>
+        <generate template="spring-datasource.xml.vm"   destfile="WEB-INF/classes/spring/spring-datasource.xml"     charset="UTF-8"/>
+        <generate template="spring-redis.xml.vm"        destfile="WEB-INF/classes/spring/spring-redis.xml"          charset="UTF-8"/>
+        <generate template="logback.xml.vm"             destfile="WEB-INF/classes/logback.xml"                      charset="UTF-8"/>
+    </script>
+
+</config>
+

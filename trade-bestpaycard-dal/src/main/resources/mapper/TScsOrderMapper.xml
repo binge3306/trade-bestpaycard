@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bestpay.trade.bestpaycard.dal.mapper.TScsOrderMapper">
+
+    <insert id="insert" parameterType="com.bestpay.trade.bestpaycard.dal.model.TScsOrderDO">
+        INSERT INTO t_scs_order
+        (ORDER_ID, ORDER_CODE, CUST_ID, ORDER_TYPE, AREA_CODE,
+        TERM_ID,  ACCT_DATE, BEGIN_DATE, END_DATE, EFF_DATE,
+        LOGIN_TYPE, STAT, PAY_STAT, ACT_STAT, MEMO,
+        TERM_SEQ, OPER_ORIG, OPER_STAT, CHANNEL_TYPE, EXT_ORDER_ID,
+        SRC_ORDER_ID, OLD_STAT, OLD_PAYSTAT, OLD_ACTSTAT, RET_CODE,
+        RET_MSG, EXT_VALUE1, EXT_VALUE2, EXT_VALUE3, EXT_VALUE4)
+        VALUES
+        (#{orderId},
+        #{orderCode},
+        #{custId},
+        #{orderType},
+        #{areaCode},
+        #{termId},
+        SYSDATE,
+        SYSDATE,
+        SYSDATE,
+        SYSDATE,
+        #{loginType},
+        #{stat},
+        #{payStat},
+        #{actStat},
+        #{memo},
+        #{termSeq},
+        #{operOrig},
+        #{operStat},
+        #{channelType},
+        #{extOrderId},
+        #{srcOrderId},
+        #{oldStat},
+        #{oldPayStat},
+        #{oldActStat},
+        #{retCode},
+        #{retMsg},
+        #{extValue1},
+        #{extValue2},
+        #{extValue3},
+        #{extValue4})
+    </insert>
+
+</mapper>
