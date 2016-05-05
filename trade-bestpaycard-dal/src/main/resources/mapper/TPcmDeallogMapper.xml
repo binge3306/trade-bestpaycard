@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+ <mapper namespace="com.bestpay.trade.bestpaycard.dal.mapper.TPcmDealLogMapper">
+       <resultMap id="BaseResultMap" type="com.bestpay.trade.bestpaycard.dal.model.TPcmDealLogDO">
+              <result column="LOG_DEAL" property="logDeal" jdbcType="VARCHAR"/>
+              <result column="TRADE_SEQ" property="tradeSeq" jdbcType="VARCHAR"/>
+              <result column="CARD_NO" property="cardNo" jdbcType="VARCHAR"/>
+              <result column="DEAL_CODE" property="dealCode" jdbcType="VARCHAR"/>
+              <result column="LOAN_FLAG" property="loanFlag" jdbcType="VARCHAR"/>
+              <result column="DEAL_AMOUNT" property="dealAmount" jdbcType="INT"/>
+              <result column="END_BAL" property="endBal" jdbcType="INT"/>
+              <result column="CHANNEL_TYPE" property="channelType" jdbcType="VARCHAR"/>
+              <result column="DEAL_SRC" property="dealSrc" jdbcType="VARCHAR"/>
+              <result column="DEAL_DATE" property="dealDate" jdbcType="VARCHAR"/>
+              <result column="DEAL_TIME" property="dealTime" jdbcType="VARCHAR"/>
+              <result column="RECORD_DATE" property="recordDate" jdbcType="TIMESTAMP"/>
+              <result column="RESULT_CODE" property="resultCode" jdbcType="VARCHAR"/>
+              <result column="RESULT_INFO" property="resultInfo" jdbcType="VARCHAR"/>
+              <result column="MEMO" property="memo" jdbcType="VARCHAR"/>
+              <result column="SRC_LOG_SEQ" property="srcLogSeq" jdbcType="VARCHAR"/>
+              <result column="SRC_TRADE_SEQ" property="srcTradeSeq" jdbcType="VARCHAR"/>
+              <result column="ORDER_ID" property="orderId" jdbcType="VARCHAR"/>
+              <result column="ACCT_CODE" property="acctCode" jdbcType="VARCHAR"/>
+              <result column="CARD_TYPE" property="cardType" jdbcType="VARCHAR"/>
+       </resultMap>
+
+       <sql id="Base_Colum_List">
+              T.LOG_SEQ,
+              T.TRADE_SEQ,
+              T.CARD_NO,
+              T.DEAL_CODE,
+              T.LOAN_FLAG,
+              T.DEAL_AMOUNT,
+              T.END_BAL,
+              T.CHANNEL_TYPE,
+              T.DEAL_SRC,
+              T.DEAL_DATE,
+              T.DEAL_TIME,
+              T.RECORD_DATE,
+              T.RESULT_CODE,
+              T.RESULT_INFO,
+              T.MEMO,
+              T.SRC_LOG_SEQ,
+              T.SRC_TRADE_SEQ,
+              T.ORDER_ID,
+              T.ACCT_CODE,
+              T.CARD_TYPE
+       </sql>
+
+       <!--插入交易日志-->
+       <insert id="insert" parameterType="com.bestpay.trade.bestpaycard.dal.model.TPcmDealLogDO">
+              INSERT INTO
+                     T_PCM_DEALLOG T(
+                     <include refid="Base_Colum_List"/>
+                     )
+              VALUES
+                     (
+                     #{logDeal,jdbcType=VARCHAR},
+                     #{tradeSeq,jdbcType=VARCHAR},
+                     #{cardNo,jdbcType=VARCHAR},
+                     #{dealCode,jdbcType=VARCHAR},
+                     #{loanFlag,jdbcType=VARCHAR},
+                     #{dealAmount,jdbcType=VARCHAR},
+                     #{endBal,jdbcType=VARCHAR},
+                     #{channelType,jdbcType=VARCHAR},
+                     #{dealSrc,jdbcType=VARCHAR},
+                     #{dealDate,jdbcType=VARCHAR},
+                     #{dealTime,jdbcType=VARCHAR},
+                     #{recordDate,jdbcType=VARCHAR},
+                     #{resultCode,jdbcType=VARCHAR},
+                     #{resultInfo,jdbcType=VARCHAR},
+                     #{memo,jdbcType=VARCHAR},
+                     #{srcLogSeq,jdbcType=VARCHAR},
+                     #{srcTradeSeq,jdbcType=VARCHAR},
+                     #{orderId,jdbcType=VARCHAR},
+                     #{acctCode,jdbcType=VARCHAR},
+                     #{cardType,jdbcType=VARCHAR}
+                )
+       </insert>
+
+       <!--通过交易流水号查询交易记录-->
+       <select id="selectByTradeSeq" parameterType="java.lang.String" resultType="com.bestpay.trade.bestpaycard.dal.model.TPcmDealLogDO">
+              SELECT
+                <include refid="Base_Colum_List"/>
+              FROM
+                T_PCM_DEALLOG T
+              WHERE
+                T.TRADESEQ=#{trade,jdbcType=VARCHAR}
+       </select>
+
+       <!--创建交易日志流水号，6位日期加9位流水号-->
+       <select id="creatLogSeq" resultType="java.lang.String">
+              SELECT
+                (TO_CHAR(SYSDATE,'YYMMDD') || LPAD(SQ_PCM_DEALLOG.NEXTVAL,9,'0'))
+              FROM
+                dual
+       </select>
+
+       <update id="updateBal" parameterType="com.bestpay.trade.bestpaycard.dal.model.TPcmDealLogDO">
+              UPDATE
+              T_PCM_DEALLOG T
+              SET
+              T.END_BAL=#{totalBal,jdbcType=INT}
+              WHERE
+              T.CARD_NO=#{tradeSeq,jdbcType=VARCHAR}
+       </update>
+</mapper>

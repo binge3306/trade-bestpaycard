@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper>
+    <resultMap id="Base_Result_Map" type="com.bestpay.trade.bestpaycard.dal.model.TPcmInfoDO">
+        <result column="CARD_NO" property="cardNo" jdbcType="VARCHAR"/>
+        <result column="CARD_SEQ_ID" property="cardSeqId" jdbcType="VARCHAR"/>
+        <result column="CARD_STATE" property="cardState" jdbcType="VARCHAR"/>
+        <result column="CARD_PWD" property="cardPwd" jdbcType="VARCHAR"/>
+        <result column="CARD_VALUE" property="cardValue" jdbcType="INT"/>
+        <result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP"/>
+        <result column="EXP_DATE" property="expDate" jdbcType="TIMESTAMP"/>
+        <result column="EFF_DATE" property="effDate" jdbcType="TIMESTAMP"/>
+        <result column="CARD_TYPE_ID" property="cardTypeId" jdbcType="INT"/>
+        <result column="PROLONG_FLAG" property="proLongFlag" jdbcType="INT"/>
+        <result column="ORDER_SEQ" property="orderSeq" jdbcType="VARCHAR"/>
+        <result column="SELL_FLAG" property="sellFlag" jdbcType="INT"/>
+    </resultMap>
+
+    <sql id="Base_colum_List">
+        T.CARD_NO,
+        T.CARD_SEQ_ID,
+        T.CARD_STATE,
+        T.CARD_PWD,
+        T.CARD_VALUE,
+        T.CREATED_DATE,
+        T.EXP_DATE,
+        T.EFF_DATE,
+        T.CARD_TYPE_ID,
+        T.PROLONG_FLAG,
+        T.ORDER_SEQ,
+        T.SELL_FLAG
+    </sql>
+
+    <!--通过卡号查询卡信息-->
+    <select id="selectByCardNo" parameterType="java.lang.String" resultType="com.bestpay.trade.bestpaycard.dal.model.TPcmInfoDO">
+        SELECT
+          <include refid="Base_colum_List"/>
+        FROM
+          T_PCM_INFO T
+        WHERE
+          T.CARD_NO=#{cardNo,jdbcType=VARCHAR}
+    </select>
+</mapper>

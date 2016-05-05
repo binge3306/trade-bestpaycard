@@ -23,6 +23,10 @@
             <groupId>com.bestpay</groupId>
             <artifactId>commons</artifactId>
         </dependency>
+        <dependency>
+            <groupId>net.sf.oval</groupId>
+            <artifactId>oval</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

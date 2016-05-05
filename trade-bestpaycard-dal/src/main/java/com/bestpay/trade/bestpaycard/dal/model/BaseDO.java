@@ -16,29 +16,9 @@ import java.util.Date;
 @ToString
 public class BaseDO implements Serializable {
 
-    /**
-     * 数据库主键
-     */
-    private String id;
 
     /**
-     * 创建时间
+     * 序列化id
      */
-    private Date createdAt;
-
-    /**
-     * 创建人
-     */
-    private String createdBy;
-
-    /**
-     * 更新时间
-     */
-    private Date updatedAt;
-
-    /**
-     * 最后更新人
-     */
-    private String updatedBy;
-
+    private static final long serialVersionUID = 7412032046673185603L;
 }

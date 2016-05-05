@@ -36,6 +36,11 @@
             <artifactId>bestpay-logback</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>net.sf.oval</groupId>
+            <artifactId>oval</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -46,9 +51,6 @@
                 <filtering>true</filtering>
             </testResource>
         </testResources>
-        <!--<filters>-->
-        <!--<filter>src/test/resources/properties/billingcenter.properties</filter>-->
-        <!--</filters>-->
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

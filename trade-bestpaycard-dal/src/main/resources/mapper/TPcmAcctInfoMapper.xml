@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper>
+    <resultMap id="Base_Result_Map" type="com.bestpay.trade.bestpaycard.dal.model.TPcmAcctInfoDO">
+        <result column="ACCT_CODE" property="acctCode" jdbcType="VARCHAR"/>
+        <result column="ACCT_TYPE" property="acctType" jdbcType="VARCHAR"/>
+        <result column="CURRENCY_CODE" property="currencyCode" jdbcType="VARCHAR"/>
+        <result column="CURRENCY_UNIT" property="currencyUnit" jdbcType="VARCHAR"/>
+        <result column="ACCT_PWD" property="acctPwd" jdbcType="VARCHAR"/>
+        <result column="TIME_LMT" property="timeLmt" jdbcType="INT"/>
+        <result column="DAY_LMT" property="dayLmt" jdbcType="INT"/>
+        <result column="TOTAL_LMT" property="totalLmt" jdbcType="INT"/>
+        <result column="TOTAL_BAL" property="totalBal" jdbcType="INT"/>
+        <result column="VALID_BAL" property="validBal" jdbcType="INT"/>
+        <result column="FROZEN_BAL" property="frozenBal" jdbcType="INT"/>
+        <result column="STAT" property="stat" jdbcType="VARCHAR"/>
+        <result column="STAT_REASON" property="statReason" jdbcType="VARCHAR"/>
+        <result column="EFF_DATE" property="efffDate" jdbcType="TIMESTAMP"/>
+        <result column="EXP_DATE" property="expDate" jdbcType="TIMESTAMP"/>
+        <result column="INIT_BAL" property="initBal" jdbcType="INT"/>
+
+    </resultMap>
+    
+    <sql id="Base_colum_List">
+
+        T.ACCT_CODE
+        T.ACCT_TYPE
+        T.CURRENCY_CODE
+        T.CURRENCY_UNIT
+        T.ACCT_PWD
+        T.TIME_LMT
+        T.DAY_LMT
+        T.TOTAL_LMT
+        T.TOTAL_BAL
+        T.VALID_BAL
+        T.FROZEN_BAL
+        T.STAT
+        T.STAT_REASON
+        T.EFF_DATE
+        T.EXP_DATE
+        T.INIT_BAL
+    </sql>
+
+
+    <!--通过账户号查询账户信息-->
+    <select id="selectByAcctCode" parameterType="java.lang.String" resultType="com.bestpay.trade.bestpaycard.dal.model.TPcmAcctInfoDO">
+        
+        SELECT 
+            <include refid="Base_colum_List"/>
+        FROM
+            T_PCM_ACCTINFO T
+        WHERE
+            T.ACCT_CODE=#{acctCode,jdbcType=VARCHAR}
+    </select>
+
+    <!--更新账户余额-->
+    <select id="updateBalance" parameterType="com.bestpay.trade.bestpaycard.dal.model.TPcmAcctInfoDO">
+        UPDATE
+            T_PCM_ACCTINFO T
+        SET
+            T.TOTAL_BAL=#{totalBal,jdbcType=INT},
+            T.VALID_BAL=#{valid,jdbcType=INT}
+        WHERE
+            T.ACCT_CODE=#{cardNo,jdbcType=VARCHAR}
+    </select>
+
+    <select id="lockAcctInfo" parameterType="java.lang.String">
+        SELECT
+             <include refid="Base_colum_List"/>
+        FROM
+            T_PCM_ACCTINFO T
+        WHERE
+            T.ACCT_CODE=#{acctCode,jdbcType=VARCHAR}
+        FOR UPDATE
+
+    </select>
+</mapper>
