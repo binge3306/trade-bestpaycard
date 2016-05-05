@@ -15,13 +15,12 @@ public class TScsProdAttrTest extends BaseSpringTest {
     @Test
     public void insert(){
         TScsProdAttrDO tScsProdAttrDO = new TScsProdAttrDO();
-        tScsProdAttrDO.setActListId("11");
+        tScsProdAttrDO.setActListId("14");
         tScsProdAttrDO.setAttrId(11L);
         tScsProdAttrDO.setProdId(11L);
         tScsProdAttrDO.setStat("11");
-        tScsProdAttrDO.setValue1("11");
+//        tScsProdAttrDO.setValue1("11");
         tScsProdAttrDO.setValue2("11");
-
         int number = tScsProdAttrMapper.insert(tScsProdAttrDO);
         System.out.println(number);
     }

@@ -6,31 +6,28 @@
         INSERT INTO t_scs_actlist
           (ACTLIST_ID, ACTLIST_SEQ, ORDER_ID, CUST_ID, PROD_ID,
           ACTION_ID, OBJ_CODE, OBJ_COUNT, CREATE_DATE, BEGIN_DATE,
-          END_DATE, STAT, RET_ID, RET_DATE, RET_CODE,
-          RET_MSG, EVENT_SEQ, QRY_EVENT_SEQ, SRC_EVENTSEQ, SAG_ACTIONID,
-          INF_ACTIONID)
+          STAT, RET_ID, RET_CODE, RET_MSG, EVENT_SEQ,
+          QRY_EVENT_SEQ, SRC_EVENTSEQ, SAG_ACTIONID, INF_ACTIONID)
         VALUES (
-          #{actListId},
-          #{actListSeq},
-          #{orderId},
-          #{custId},
-          #{prodId},
-          #{actionId},
-          #{objCode},
-          #{objCount},
+          #{actListId, jdbcType=VARCHAR},
+          #{actListSeq, jdbcType=BIGINT},
+          #{orderId, jdbcType=VARCHAR},
+          #{custId, jdbcType=BIGINT},
+          #{prodId, jdbcType=BIGINT},
+          #{actionId, jdbcType=BIGINT},
+          #{objCode, jdbcType=VARCHAR},
+          #{objCount, jdbcType=BIGINT},
           SYSDATE,
           SYSDATE,
-          SYSDATE,
-          #{stat},
-          #{retId},
-          SYSDATE,
-          #{retCode},
-          #{retMsg},
-          #{eventSeq},
-          #{qryEventSeq},
-          #{srcEventSeq},
-          #{sagActionId},
-          #{infActionId}
+          #{stat, jdbcType=CHAR},
+          #{retId, jdbcType=VARCHAR},
+          #{retCode, jdbcType=VARCHAR},
+          #{retMsg, jdbcType=VARCHAR},
+          #{eventSeq, jdbcType=VARCHAR},
+          #{qryEventSeq, jdbcType=VARCHAR},
+          #{srcEventSeq, jdbcType=VARCHAR},
+          #{sagActionId, jdbcType=BIGINT},
+          #{infActionId, jdbcType=BIGINT}
         )
     </insert>
 

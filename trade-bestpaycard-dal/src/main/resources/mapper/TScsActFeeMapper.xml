@@ -7,16 +7,16 @@
           (ACTFEE_ID, ORDER_ID, ACTLIST_ID, CURRENCY_CODE, PRIM_MONEY,
           DISC_MONEY, DUE_MOENY, PAY_MONEY, STAT, FARE_ID)
         VALUES (
-          #{actFeeId},
-          #{orderId},
-          #{actListId},
-          #{currencyCode},
-          #{primMoney},
-          #{discMoney},
-          #{dueMoney},
-          #{payMoney},
-          #{stat},
-          #{fareId}
+          #{actFeeId, jdbcType=BIGINT},
+          #{orderId, jdbcType=VARCHAR},
+          #{actListId, jdbcType=VARCHAR},
+          #{currencyCode, jdbcType=VARCHAR},
+          #{primMoney, jdbcType=DECIMAL},
+          #{discMoney, jdbcType=DECIMAL},
+          #{dueMoney, jdbcType=DECIMAL},
+          #{payMoney, jdbcType=DECIMAL},
+          #{stat, jdbcType=CHAR},
+          #{fareId, jdbcType=BIGINT}
         )
     </insert>
 

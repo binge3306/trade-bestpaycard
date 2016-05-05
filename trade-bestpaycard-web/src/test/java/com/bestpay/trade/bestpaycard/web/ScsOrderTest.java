@@ -24,7 +24,7 @@ public class ScsOrderTest extends BaseSpringTest {
         tScsOrderDO.setActStat("11");
 
         tScsOrderDO.setOrderCode("11");
-        tScsOrderDO.setCustId(11);
+        tScsOrderDO.setCustId(11L);
         tScsOrderDO.setOrderType("11");
         tScsOrderDO.setAreaCode("11");
         tScsOrderDO.setTermId("11");

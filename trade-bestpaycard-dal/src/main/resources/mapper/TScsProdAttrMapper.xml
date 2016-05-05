@@ -6,12 +6,12 @@
         INSERT INTO T_SCS_PROD_ATTR
           (ACTLIST_ID, PROD_ID, ATTR_ID, VALUE1, VALUE2, STAT)
         VALUES (
-          #{actListId},
-          #{prodId},
-          #{attrId},
-          #{value1},
-          #{value2},
-          #{stat}
+          #{actListId, jdbcType=VARCHAR},
+          #{prodId, jdbcType=BIGINT},
+          #{attrId, jdbcType=BIGINT},
+          #{value1, jdbcType=VARCHAR},
+          #{value2, jdbcType=VARCHAR},
+          #{stat, jdbcType=CHAR}
         )
     </insert>
 

@@ -11,12 +11,12 @@ import lombok.ToString;
 @Getter
 @ToString
 public class TScsOrdFeeDO {
-    private Integer ordFeeId;
+    private Long ordFeeId;
     private String orderId;
     private String currencyCode;
-    private Integer primMoney;
-    private Integer discMoney;
-    private Integer dueMoney;
-    private Integer payMoney;
+    private Double primMoney;
+    private Double discMoney;
+    private Double dueMoney;
+    private Double payMoney;
     private String stat;
 }

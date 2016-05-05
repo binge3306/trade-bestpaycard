@@ -7,5 +7,5 @@ import com.bestpay.trade.bestpaycard.dal.model.TScsPaymentDO;
  */
 public interface TScsPaymentMapper {
 
-    public void insert(TScsPaymentDO tScsPaymentDO);
+    public int insert(TScsPaymentDO tScsPaymentDO);
 }

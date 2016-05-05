@@ -7,14 +7,14 @@
           (ORDFEE_ID, ORDER_ID, CURRENCY_CODE, PRIM_MONEY, DISC_MONEY,
           DUE_MOENY, PAY_MONEY, STAT)
         VALUES (
-          #{ordFeeId},
-          #{orderId},
-          #{currencyCode},
-          #{primMoney},
-          #{discMoney},
-          #{dueMoney},
-          #{payMoney},
-          #{stat}
+          #{ordFeeId, jdbcType=BIGINT},
+          #{orderId, jdbcType=VARCHAR},
+          #{currencyCode, jdbcType=VARCHAR},
+          #{primMoney, jdbcType=DECIMAL},
+          #{discMoney, jdbcType=DECIMAL},
+          #{dueMoney, jdbcType=DECIMAL},
+          #{payMoney, jdbcType=DECIMAL},
+          #{stat, jdbcType=CHAR}
         )
     </insert>
 

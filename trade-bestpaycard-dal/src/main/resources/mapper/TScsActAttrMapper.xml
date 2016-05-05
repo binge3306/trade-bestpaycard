@@ -7,14 +7,14 @@
           (ACTLIST_ID, ACTION_ID, ATTR_ID, STAT,
           VALUE1, VALUE2, VALUE3, VALUE4)
         VALUES (
-          #{actListId},
-          #{actionId},
-          #{attrId},
-          #{stat},
-          #{value1},
-          #{value2},
-          #{value3},
-          #{value4}
+          #{actListId, jdbcType=VARCHAR},
+          #{actionId, jdbcType=BIGINT},
+          #{attrId, jdbcType=BIGINT},
+          #{stat, jdbcType=CHAR},
+          #{value1, jdbcType=VARCHAR},
+          #{value2, jdbcType=VARCHAR},
+          #{value3, jdbcType=VARCHAR},
+          #{value4, jdbcType=VARCHAR}
         )
     </insert>
 

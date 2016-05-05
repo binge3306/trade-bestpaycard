@@ -15,7 +15,7 @@ import java.util.Date;
 public class TScsOrderDO {
     private String orderId;
     private String orderCode;
-    private Integer custId;
+    private Long custId;
     private String orderType;
     private String areaCode;
     private String termId;

@@ -17,11 +17,11 @@ public class ScsOrdFeeTest extends BaseSpringTest {
         TScsOrdFeeDO tScsOrdFeeDO = new TScsOrdFeeDO();
         tScsOrdFeeDO.setOrderId("11");
         tScsOrdFeeDO.setCurrencyCode("1");
-        tScsOrdFeeDO.setDiscMoney(11);
-        tScsOrdFeeDO.setDueMoney(11);
-        tScsOrdFeeDO.setOrdFeeId(11);
-        tScsOrdFeeDO.setPayMoney(11);
-        tScsOrdFeeDO.setPrimMoney(11);
+        tScsOrdFeeDO.setDiscMoney(11.0);
+        tScsOrdFeeDO.setDueMoney(11.0);
+        tScsOrdFeeDO.setOrdFeeId(11L);
+        tScsOrdFeeDO.setPayMoney(11.0);
+        tScsOrdFeeDO.setPrimMoney(11.0);
         tScsOrdFeeDO.setStat("11");
         int number = tScsOrdFeeMapper.insert(tScsOrdFeeDO);
         System.out.println(number);

@@ -7,10 +7,10 @@
        INSERT INTO t_scs_ordattr
         (ORDATTR_ID, ORDER_ID, ATTR_ID, VALUE1, VALUE2, VALUE3, VALUE4, STAT)
        VALUES
-        (#{ordAttrId},
+        (#{ordAttrId, jdbcType=varchar},
          #{orderId},
          #{AttrId},
-         #{Value1},
+         #{Value1, jdbcType=varchar},
          #{Value2},
          #{Value3},
          #{Value4},
